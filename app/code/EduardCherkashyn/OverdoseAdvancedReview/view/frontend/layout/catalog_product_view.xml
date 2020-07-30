@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="review_product_form_component"/>
+    <body>
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Review\Block\Product\Review" name="reviews_tab" as="reviews" template="Magento_Review::review.phtml" group="detailed_info">
+                <block class="Magento\Review\Block\Form" name="review_form" template="EduardCherkashyn_OverdoseAdvancedReview::form.phtml" as="review_form">
+                    <container name="product.review.form.fields.before" as="form_fields_before" label="Review Form Fields Before"/>
+                </block>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
+
