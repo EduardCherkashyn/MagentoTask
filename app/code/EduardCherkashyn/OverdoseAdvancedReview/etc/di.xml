@@ -3,3 +3,4 @@
     <preference for="Magento\Review\Model\ResourceModel\Review\Collection" type="EduardCherkashyn\OverdoseAdvancedReview\Model\ResourceModel\Review\Collection" />
     <preference for="Magento\Review\Block\Adminhtml\Edit\Form" type="EduardCherkashyn\OverdoseAdvancedReview\Block\Adminhtml\Edit\Form" />
 </config>
+

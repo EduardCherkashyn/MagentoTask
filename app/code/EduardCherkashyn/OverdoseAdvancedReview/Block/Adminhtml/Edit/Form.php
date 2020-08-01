@@ -37,6 +37,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      */
     protected $_systemStore;
 
+    protected $dataHelper;
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Registry $registry
@@ -55,12 +56,14 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository,
         \Magento\Catalog\Model\ProductFactory $productFactory,
         \Magento\Review\Helper\Data $reviewData,
+        \EduardCherkashyn\OverdoseAdvancedReview\Helper\Data $dataHelper,
         array $data = []
     ) {
         $this->_reviewData = $reviewData;
         $this->customerRepository = $customerRepository;
         $this->_productFactory = $productFactory;
         $this->_systemStore = $systemStore;
+        $this->dataHelper = $dataHelper;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -129,8 +132,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
 
         $fieldset->addField('customer', 'note', ['label' => __('Author'), 'text' => $customerText]);
 
-        $fieldset->addField('helpful', 'note', ['label' => __('Helpful'), 'text' => $helpful.' '.' votes' ]);
-
+        if ($this->dataHelper->isModuleEnabled()) {
+            $fieldset->addField('helpful', 'note', ['label' => __('Helpful'), 'text' => $helpful . ' ' . ' votes']);
+        }
         $fieldset->addField(
             'summary-rating',
             'note',
@@ -210,19 +214,19 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             'textarea',
             ['label' => __('Review'), 'required' => true, 'name' => 'detail', 'style' => 'height:24em;']
         );
+        if ($this->dataHelper->isModuleEnabled()) {
+            $fieldset->addField(
+                'pros',
+                'textarea',
+                ['label' => __('Pros'), 'name' => 'pros', 'style' => 'height:24em;']
+            );
 
-        $fieldset->addField(
-            'pros',
-            'textarea',
-            ['label' => __('Pros'), 'name' => 'pros', 'style' => 'height:24em;']
-        );
-
-        $fieldset->addField(
-            'cons',
-            'textarea',
-            ['label' => __('Cons'),'name' => 'cons', 'style' => 'height:24em;']
-        );
-
+            $fieldset->addField(
+                'cons',
+                'textarea',
+                ['label' => __('Cons'), 'name' => 'cons', 'style' => 'height:24em;']
+            );
+        }
         $form->setUseContainer(true);
         $form->setValues($review->getData());
         $this->setForm($form);

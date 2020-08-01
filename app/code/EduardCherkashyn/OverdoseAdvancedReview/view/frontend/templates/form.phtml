@@ -72,18 +72,22 @@
                             <textarea name="detail" id="review_field" cols="5" rows="3" data-validate="{required:true}" data-bind="value: review().detail"></textarea>
                         </div>
                     </div>
-                    <div class="field review-field-text">
-                        <label for="pros_field" class="label"><span><?= $block->escapeHtml(__('Pros')) ?></span></label>
-                        <div class="control">
-                            <textarea name="pros" id="pros_field" cols="5" rows="3"  data-bind="value: review().pros"></textarea>
+                    <?php
+                    $helper = \Magento\Framework\App\ObjectManager::getInstance()->get('EduardCherkashyn\OverdoseAdvancedReview\Helper\Data');
+                    if($helper->isModuleEnabled()) : ?>
+                        <div class="field review-field-text">
+                            <label for="pros_field" class="label"><span><?= $block->escapeHtml(__('Pros')) ?></span></label>
+                            <div class="control">
+                                <textarea name="pros" id="pros_field" cols="5" rows="3"  data-bind="value: review().pros"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="field review-field-text">
-                        <label for="cons_field" class="label"><span><?= $block->escapeHtml(__('Cons')) ?></span></label>
-                        <div class="control">
-                            <textarea name="cons" id="cons_field" cols="5" rows="3"  data-bind="value: review().cons"></textarea>
+                        <div class="field review-field-text">
+                            <label for="cons_field" class="label"><span><?= $block->escapeHtml(__('Cons')) ?></span></label>
+                            <div class="control">
+                                <textarea name="cons" id="cons_field" cols="5" rows="3"  data-bind="value: review().cons"></textarea>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 </fieldset>
                 <div class="actions-toolbar review-form-actions">
                     <div class="primary actions-primary">
