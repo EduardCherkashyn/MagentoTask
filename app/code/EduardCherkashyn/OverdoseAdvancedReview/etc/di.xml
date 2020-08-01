@@ -2,5 +2,7 @@
     <preference for="Magento\Review\Model\ResourceModel\Review" type="EduardCherkashyn\OverdoseAdvancedReview\Model\ResourceModel\Review" />
     <preference for="Magento\Review\Model\ResourceModel\Review\Collection" type="EduardCherkashyn\OverdoseAdvancedReview\Model\ResourceModel\Review\Collection" />
     <preference for="Magento\Review\Block\Adminhtml\Edit\Form" type="EduardCherkashyn\OverdoseAdvancedReview\Block\Adminhtml\Edit\Form" />
+    <preference for="Magento\Review\Block\Adminhtml\Grid" type="EduardCherkashyn\OverdoseAdvancedReview\Block\Adminhtml\ReviewGrid" />
+    <preference for="Magento\Review\Model\ResourceModel\Review\Product\Collection" type="EduardCherkashyn\OverdoseAdvancedReview\Model\ResourceModel\Review\Product\Collection" />
 </config>
 
