@@ -32,7 +32,8 @@ class Review extends \Magento\Review\Model\ResourceModel\Review
             'detail' => $object->getDetail(),
             'nickname' => $object->getNickname(),
             'pros' => $object->getPros(),
-            'cons' => $object->getCons()
+            'cons' => $object->getCons(),
+            'helpful' => $object->getHelpful()
         ];
         $select = $connection->select()->from($this->_reviewDetailTable, 'detail_id')->where('review_id = :review_id');
         $detailId = $connection->fetchOne($select, [':review_id' => $object->getId()]);
